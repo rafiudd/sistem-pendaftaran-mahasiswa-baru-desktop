@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EditMahasiswa.vb" />
     <Compile Update="Mahasiswa.vb">
       <SubType>Form</SubType>
     </Compile>
