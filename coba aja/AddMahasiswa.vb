@@ -10,13 +10,14 @@ Public Class AddMahasiswa
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim command As MySqlCommand
-        Dim name, gender, address, jurusan, birthday, created_at As String
+        Dim name, gender, address, jurusan, birthday, email, created_at As String
         Dim stream As New MemoryStream
 
         name = add_fullname.Text
         gender = add_jenis_kelamin.Text
         address = add_address.Text
         jurusan = add_jurusan.Text
+        email = add_email.Text
         birthday = Format(add_tanggal_lahir.Value, "dd-MM-yyyy")
         created_at = Format(Now, "dd-MM-yyyy hh:ss")
 
@@ -26,7 +27,7 @@ Public Class AddMahasiswa
 
         If open_db() Then
             Try
-                Dim sql As String = "INSERT INTO mahasiswa VALUES(NULL,'" & name & "', '" & gender & "', '" & address & "', '" & birthday & "', '" & jurusan & "', @photo, '" & created_at & "')"
+                Dim sql As String = "INSERT INTO mahasiswa VALUES(NULL,'" & name & "', '" & gender & "', '" & address & "', '" & birthday & "', '" & email & "', '" & jurusan & "', @photo, '" & created_at & "')"
                 command = New MySqlCommand(sql, connect)
                 command.Parameters.Add("@photo", MySqlDbType.Blob).Value = stream.ToArray()
 
@@ -49,7 +50,7 @@ Public Class AddMahasiswa
     End Sub
 
     Private Sub ClearData()
-        add_phone.Text = ""
+        add_email.Text = ""
         add_fullname.Text = ""
         add_address.Text = ""
         add_jurusan.Text = ""

@@ -23,8 +23,9 @@ Partial Class AddMahasiswa
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.add_phone = New System.Windows.Forms.TextBox()
+        Me.add_email = New System.Windows.Forms.TextBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.add_fullname = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.add_address = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -40,7 +41,6 @@ Partial Class AddMahasiswa
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.upload_photo = New System.Windows.Forms.Label()
-        Me.add_fullname = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel4.SuspendLayout()
@@ -57,27 +57,27 @@ Partial Class AddMahasiswa
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.Panel4.Controls.Add(Me.add_phone)
+        Me.Panel4.Controls.Add(Me.add_email)
         Me.Panel4.Location = New System.Drawing.Point(85, 556)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(455, 60)
         Me.Panel4.TabIndex = 8
         '
-        'add_phone
+        'add_email
         '
-        Me.add_phone.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.add_email.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.add_phone.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.add_phone.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.add_phone.Font = New System.Drawing.Font("Inter", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.add_phone.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
-        Me.add_phone.Location = New System.Drawing.Point(20, 17)
-        Me.add_phone.Margin = New System.Windows.Forms.Padding(30)
-        Me.add_phone.Name = "add_phone"
-        Me.add_phone.PlaceholderText = "Masukan No HP"
-        Me.add_phone.Size = New System.Drawing.Size(402, 23)
-        Me.add_phone.TabIndex = 2
+        Me.add_email.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.add_email.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.add_email.Font = New System.Drawing.Font("Inter", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.add_email.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
+        Me.add_email.Location = New System.Drawing.Point(20, 17)
+        Me.add_email.Margin = New System.Windows.Forms.Padding(30)
+        Me.add_email.Name = "add_email"
+        Me.add_email.PlaceholderText = "Masukan Email"
+        Me.add_email.Size = New System.Drawing.Size(402, 23)
+        Me.add_email.TabIndex = 2
         '
         'Panel3
         '
@@ -87,6 +87,19 @@ Partial Class AddMahasiswa
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(455, 60)
         Me.Panel3.TabIndex = 7
+        '
+        'add_fullname
+        '
+        Me.add_fullname.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.add_fullname.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.add_fullname.Font = New System.Drawing.Font("Inter", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.add_fullname.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
+        Me.add_fullname.Location = New System.Drawing.Point(20, 17)
+        Me.add_fullname.Margin = New System.Windows.Forms.Padding(20)
+        Me.add_fullname.Name = "add_fullname"
+        Me.add_fullname.PlaceholderText = "Masukan Nama Lengkap"
+        Me.add_fullname.Size = New System.Drawing.Size(427, 23)
+        Me.add_fullname.TabIndex = 1
         '
         'Panel1
         '
@@ -174,6 +187,7 @@ Partial Class AddMahasiswa
         '
         'add_jenis_kelamin
         '
+        Me.add_jenis_kelamin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.add_jenis_kelamin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.add_jenis_kelamin.Font = New System.Drawing.Font("Inter", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.add_jenis_kelamin.FormattingEnabled = True
@@ -257,19 +271,6 @@ Partial Class AddMahasiswa
         Me.upload_photo.TabIndex = 16
         Me.upload_photo.Text = "Upload Foto "
         '
-        'add_fullname
-        '
-        Me.add_fullname.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
-        Me.add_fullname.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.add_fullname.Font = New System.Drawing.Font("Inter", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.add_fullname.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
-        Me.add_fullname.Location = New System.Drawing.Point(20, 17)
-        Me.add_fullname.Margin = New System.Windows.Forms.Padding(20)
-        Me.add_fullname.Name = "add_fullname"
-        Me.add_fullname.PlaceholderText = "Masukan Nama Lengkap"
-        Me.add_fullname.Size = New System.Drawing.Size(427, 23)
-        Me.add_fullname.TabIndex = 1
-        '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
@@ -330,7 +331,7 @@ Partial Class AddMahasiswa
     End Sub
 
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents add_phone As TextBox
+    Friend WithEvents add_email As TextBox
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents add_address As TextBox

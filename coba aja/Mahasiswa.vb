@@ -8,12 +8,6 @@ Public Class Mahasiswa
 
     Private headerColor As Color = Color.Transparent
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs)
-        Dim command As MySqlCommand
-        Dim reader As MySqlDataReader
-        Dim username, password As String
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Close()
     End Sub
@@ -56,30 +50,31 @@ Public Class Mahasiswa
 
         If open_db() Then
             data_set = New DataSet
-            query = "SELECT * FROM users"
+            query = "SELECT id, name, gender, jurusan, created_at FROM mahasiswa ORDER BY id DESC"
             Try
                 data_adapter = New MySqlDataAdapter(query, connect)
 
                 data_adapter.Fill(data_set)
                 DataGridView1.DataSource = data_set.Tables(0)
                 DataGridView1.Columns(0).HeaderText = "ID"
-                DataGridView1.Columns(1).HeaderText = "Username"
-                DataGridView1.Columns(2).HeaderText = "Password"
-                DataGridView1.Columns(3).HeaderText = "Address"
+                DataGridView1.Columns(1).HeaderText = "Nama Lengkap"
+                DataGridView1.Columns(2).HeaderText = "Gender"
+                DataGridView1.Columns(3).HeaderText = "Jurusan"
+                DataGridView1.Columns(4).HeaderText = "Tanggal Mendaftar"
 
                 Dim btn_edit As New DataGridViewButtonColumn()
                 btn_edit.Name = "btn_edit"
                 btn_edit.HeaderText = "Edit Data"
                 btn_edit.Text = "EDIT"
                 btn_edit.UseColumnTextForButtonValue = True
-                DataGridView1.Columns.Insert(4, btn_edit)
+                DataGridView1.Columns.Insert(5, btn_edit)
 
                 Dim btn_delete As New DataGridViewButtonColumn()
                 btn_delete.Name = "btn_delete"
                 btn_delete.HeaderText = "Delete Data"
                 btn_delete.Text = "DELETE"
                 btn_delete.UseColumnTextForButtonValue = True
-                DataGridView1.Columns.Insert(5, btn_delete)
+                DataGridView1.Columns.Insert(6, btn_delete)
 
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -106,11 +101,17 @@ Public Class Mahasiswa
         Dim command As MySqlCommand
 
 
-        If e.ColumnIndex = 5 Then
+        If e.ColumnIndex = 6 Then
+            If e.RowIndex < 0 Then
+                Return
+            End If
+
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+
+
             If open_db() Then
                 Try
-                    Dim sql As String = "DELETE FROM users WHERE id='" & r1.Cells("ID").Value & "'"
+                    Dim sql As String = "DELETE FROM mahasiswa WHERE id='" & r1.Cells("ID").Value & "'"
                     command = New MySqlCommand(sql, connect)
                     command.ExecuteNonQuery()
 
@@ -123,13 +124,13 @@ Public Class Mahasiswa
                     connect.Close()
                 End Try
             End If
-        ElseIf e.ColumnIndex = 4 Then
-            Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+        ElseIf e.ColumnIndex = 5 Then
+            If e.RowIndex < 0 Then
+                Return
+            End If
 
+            Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
             EditMahasiswa.update_id.Text = r1.Cells("ID").Value
-            EditMahasiswa.update_name.Text = r1.Cells("Username").Value
-            EditMahasiswa.update_password.Text = r1.Cells("Password").Value
-            EditMahasiswa.update_address.Text = r1.Cells("Address").Value
 
             EditMahasiswa.Show()
         End If
