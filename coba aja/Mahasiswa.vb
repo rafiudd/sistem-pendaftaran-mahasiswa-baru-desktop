@@ -126,7 +126,8 @@ Public Class Mahasiswa
         ElseIf e.ColumnIndex = 4 Then
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
 
-            EditMahasiswa.update_username.Text = r1.Cells("Username").Value
+            EditMahasiswa.update_id.Text = r1.Cells("ID").Value
+            EditMahasiswa.update_name.Text = r1.Cells("Username").Value
             EditMahasiswa.update_password.Text = r1.Cells("Password").Value
             EditMahasiswa.update_address.Text = r1.Cells("Address").Value
 

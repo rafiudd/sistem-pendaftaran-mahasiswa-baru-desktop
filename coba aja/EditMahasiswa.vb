@@ -9,7 +9,7 @@ Public Class EditMahasiswa
         Dim command As MySqlCommand
         Dim username, password, address As String
 
-        username = update_username.Text
+        username = update_id.Text
         password = update_password.Text
         address = update_address.Text
 
@@ -17,11 +17,11 @@ Public Class EditMahasiswa
 
         If open_db() Then
             Try
-                Dim sql As String = "INSERT INTO users VALUES(NULL,'" & username & "', '" & password & "', '" & address & "')"
+                Dim sql As String = "UPDATE users SET username='" & update_name.Text & "', password='" & update_password.Text & "', address='" & update_address.Text & "' WHERE id='" & update_id.Text & "'"
                 command = New MySqlCommand(sql, connect)
                 command.ExecuteNonQuery()
 
-                MessageBox.Show("Sukses Tambah Data")
+                MessageBox.Show("Sukses Edit Data")
 
                 Me.Hide()
                 Mahasiswa.Show()
@@ -34,5 +34,9 @@ Public Class EditMahasiswa
             End Try
 
         End If
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+
     End Sub
 End Class
