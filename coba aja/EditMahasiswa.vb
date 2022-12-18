@@ -8,7 +8,7 @@ Public Class EditMahasiswa
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim command As MySqlCommand
         Dim name, gender, address, jurusan, birthday, email As String
-        Dim stream As New MemoryStream
+        Dim photo() As Byte
 
         name = update_fullname.Text
         gender = update_jenis_kelamin.Text
@@ -17,19 +17,23 @@ Public Class EditMahasiswa
         email = update_email.Text
         birthday = Format(update_tanggal_lahir.Value, "dd-MM-yyyy")
 
-        PictureBox1.Image.Save(stream, PictureBox1.Image.RawFormat)
+        Using ms As New MemoryStream()
+            PictureBox1.Image.Save(ms, PictureBox1.Image.RawFormat)
+            photo = ms.ToArray()
+        End Using
 
+
+        'PictureBox1.Image.Save(stream, PictureBox1.Image.RawFormat)
         connect.Close()
 
         If open_db() Then
             Try
                 Dim sql As String = "UPDATE mahasiswa SET name='" & name & "', gender='" & gender & "', address='" & address & "',  email='" & email & "',  birthday='" & birthday & "',  jurusan='" & jurusan & "', photo=@photo WHERE id='" & update_id.Text & "'"
                 command = New MySqlCommand(sql, connect)
-                command.Parameters.Add("@photo", MySqlDbType.Blob).Value = stream.ToArray()
+                command.Parameters.Add("@photo", MySqlDbType.Blob).Value = photo
                 command.ExecuteNonQuery()
 
                 MessageBox.Show("Sukses Edit Data")
-
                 Me.Hide()
                 Mahasiswa.Show()
                 Mahasiswa.refresh_data(sender, e)
@@ -43,11 +47,8 @@ Public Class EditMahasiswa
         End If
     End Sub
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub EditMahasiswa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.CenterToScreen()
         LoadDataJurusan()
         LoadDataById()
     End Sub
@@ -61,10 +62,7 @@ Public Class EditMahasiswa
         If open_db() Then
             Try
                 command = New MySqlCommand(query, connect)
-
                 reader = command.ExecuteReader
-
-
 
                 Do While reader.Read
                     update_fullname.Text = reader.Item("name")
@@ -116,5 +114,16 @@ Public Class EditMahasiswa
         If open_file.ShowDialog = System.Windows.Forms.DialogResult.OK Then
             PictureBox1.Image = Image.FromFile(open_file.FileName)
         End If
+    End Sub
+
+    Private Sub ClearData()
+        update_email.Text = ""
+        update_fullname.Text = ""
+        update_address.Text = ""
+        update_jurusan.Text = ""
+        update_jenis_kelamin.Text = ""
+        update_jurusan.Text = ""
+        update_tanggal_lahir.Value = Now
+        PictureBox1.Image = Nothing
     End Sub
 End Class

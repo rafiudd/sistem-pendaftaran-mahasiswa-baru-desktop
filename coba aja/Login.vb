@@ -60,11 +60,7 @@ Public Class Login
         draggable = False
     End Sub
 
-    Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
-
-    End Sub
-
-    Private Sub ContextMenuStrip1_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs)
-
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.CenterToScreen()
     End Sub
 End Class

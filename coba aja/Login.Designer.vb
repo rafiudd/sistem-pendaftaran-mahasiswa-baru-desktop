@@ -200,7 +200,7 @@ Partial Class Login
         Me.Label2.Text = "SISTEM PENDAFTARAN " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "MAHASISWA BARU"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Form1
+        'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -211,8 +211,8 @@ Partial Class Login
         Me.Controls.Add(Me.Panel2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Name = "Login"
+        Me.Text = "Login"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel4.ResumeLayout(False)

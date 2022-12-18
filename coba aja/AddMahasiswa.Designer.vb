@@ -308,7 +308,7 @@ Partial Class AddMahasiswa
         Me.Controls.Add(Me.Panel8)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "AddMahasiswa"
-        Me.Text = "Form2"
+        Me.Text = "Tambah Mahasiswa"
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)

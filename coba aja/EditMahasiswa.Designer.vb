@@ -319,7 +319,7 @@ Partial Class EditMahasiswa
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(1105, 745)
+        Me.ClientSize = New System.Drawing.Size(1141, 745)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel1)
@@ -334,7 +334,7 @@ Partial Class EditMahasiswa
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "EditMahasiswa"
-        Me.Text = "Form2"
+        Me.Text = "Edit Mahasiswa"
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel6.ResumeLayout(False)
