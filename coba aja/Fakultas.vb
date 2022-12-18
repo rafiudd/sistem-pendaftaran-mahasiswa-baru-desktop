@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports coba_aja.My.Resources
 Imports MySql.Data.MySqlClient
 
-Public Class Mahasiswa
+Public Class Fakultas
 
     Private headerColor As Color = Color.Transparent
 
@@ -33,50 +33,42 @@ Public Class Mahasiswa
         draggable = False
     End Sub
 
-    Private Sub Maha_Click(sender As Object, e As EventArgs) Handles Maha.Click
-
-    End Sub
-
-    Private Sub Mahasiswa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub KelasLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim data_adapter As DataAdapter
         Dim data_set As DataSet
         Dim query As String
-
         Me.CenterToScreen()
+
 
         DataGridView1.Update()
         DataGridView1.RefreshEdit()
-
 
         connect.Close()
 
         If open_db() Then
             data_set = New DataSet
-            query = "SELECT id, name, gender, jurusan, created_at FROM mahasiswa ORDER BY id DESC"
+            query = "SELECT * FROM fakultas ORDER BY id DESC"
             Try
                 data_adapter = New MySqlDataAdapter(query, connect)
 
                 data_adapter.Fill(data_set)
                 DataGridView1.DataSource = data_set.Tables(0)
                 DataGridView1.Columns(0).HeaderText = "ID"
-                DataGridView1.Columns(1).HeaderText = "Nama Lengkap"
-                DataGridView1.Columns(2).HeaderText = "Gender"
-                DataGridView1.Columns(3).HeaderText = "Program Studi"
-                DataGridView1.Columns(4).HeaderText = "Tanggal Mendaftar"
+                DataGridView1.Columns(1).HeaderText = "Nama Fakultas"
 
                 Dim btn_edit As New DataGridViewButtonColumn()
                 btn_edit.Name = "btn_edit"
                 btn_edit.HeaderText = "Edit Data"
                 btn_edit.Text = "EDIT"
                 btn_edit.UseColumnTextForButtonValue = True
-                DataGridView1.Columns.Insert(5, btn_edit)
+                DataGridView1.Columns.Insert(2, btn_edit)
 
                 Dim btn_delete As New DataGridViewButtonColumn()
                 btn_delete.Name = "btn_delete"
                 btn_delete.HeaderText = "Delete Data"
                 btn_delete.Text = "DELETE"
                 btn_delete.UseColumnTextForButtonValue = True
-                DataGridView1.Columns.Insert(6, btn_delete)
+                DataGridView1.Columns.Insert(3, btn_delete)
 
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -87,13 +79,13 @@ Public Class Mahasiswa
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        AddMahasiswa.Show()
+        AddKelas.Show()
     End Sub
 
     Public Sub refresh_data(sender As Object, e As EventArgs)
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
-        Mahasiswa_Load(e, e) 'Load everything in your form, load event again
+        KelasLoad(e, e) 'Load everything in your form, load event again
 
         Me.Refresh()
     End Sub
@@ -103,17 +95,17 @@ Public Class Mahasiswa
         Dim command As MySqlCommand
 
 
-        If e.ColumnIndex = 6 Then
+        If e.ColumnIndex = 3 Then
             If e.RowIndex < 0 Then
                 Return
             End If
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            MessageBox.Show(r1.Cells("ID").Value)
+
 
             If open_db() Then
                 Try
-                    Dim sql As String = "DELETE FROM mahasiswa WHERE id='" & r1.Cells("ID").Value & "'"
+                    Dim sql As String = "DELETE FROM kelas fakultas id='" & r1.Cells("ID").Value & "'"
                     command = New MySqlCommand(sql, connect)
                     command.ExecuteNonQuery()
 
@@ -126,34 +118,33 @@ Public Class Mahasiswa
                     connect.Close()
                 End Try
             End If
-        ElseIf e.ColumnIndex = 5 Then
+        ElseIf e.ColumnIndex = 2 Then
             If e.RowIndex < 0 Then
                 Return
             End If
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            EditMahasiswa.update_id.Text = r1.Cells("ID").Value
+            EditKelas.ID.Text = r1.Cells("ID").Value
 
-            EditMahasiswa.Show()
+            EditKelas.Show()
         End If
     End Sub
 
-    Private Sub kelas_nav_Click(sender As Object, e As EventArgs) Handles kelas_nav.Click
-        Hide()
-
-        kelas_form.Visible = True
-        kelas_form.refresh_data(e, e)
+    Private Sub mahasiswa_nav_Click(sender As Object, e As EventArgs) Handles mahasiswa_nav.Click
+        Me.Hide()
+        Mahasiswa.Show()
+        Mahasiswa.refresh_data(e, e)
     End Sub
 
-    Private Sub program_nav_Click(sender As Object, e As EventArgs) Handles program_nav.Click
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
         Hide()
-        ProgramStudi.Visible = True
+        ProgramStudi.Show()
         ProgramStudi.refresh_data(e, e)
     End Sub
 
-    Private Sub fakultas_nav_Click(sender As Object, e As EventArgs) Handles fakultas_nav.Click
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
         Hide()
-        Fakultas.Show()
-        Fakultas.refresh_data(e, e)
+        kelas_form.Show()
+        kelas_form.refresh_data(e, e)
     End Sub
 End Class

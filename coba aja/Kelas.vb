@@ -57,7 +57,7 @@ Public Class kelas_form
                 DataGridView1.Columns(1).HeaderText = "Kelas"
                 DataGridView1.Columns(2).HeaderText = "Dosen"
                 DataGridView1.Columns(3).HeaderText = "Kode Kelas"
-                DataGridView1.Columns(4).HeaderText = "Jurusan"
+                DataGridView1.Columns(4).HeaderText = "Program Studi"
 
                 Dim btn_edit As New DataGridViewButtonColumn()
                 btn_edit.Name = "btn_edit"
@@ -136,5 +136,18 @@ Public Class kelas_form
     Private Sub mahasiswa_nav_Click(sender As Object, e As EventArgs) Handles mahasiswa_nav.Click
         Me.Hide()
         Mahasiswa.Show()
+        Mahasiswa.refresh_data(e, e)
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        Hide()
+        ProgramStudi.Show()
+        ProgramStudi.refresh_data(e, e)
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        Hide()
+        Fakultas.Show()
+        Fakultas.refresh_data(e, e)
     End Sub
 End Class

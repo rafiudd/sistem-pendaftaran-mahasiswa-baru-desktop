@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EditProgramStudi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddProgramStudi.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="EditKelas.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -27,6 +33,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditMahasiswa.vb" />
+    <Compile Update="Fakultas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ProgramStudi.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Kelas.vb" />
     <Compile Update="Mahasiswa.vb">
       <SubType>Form</SubType>

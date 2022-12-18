@@ -4,7 +4,7 @@ Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 Imports coba_aja.My.Resources
 Imports MySql.Data.MySqlClient
 
-Public Class Mahasiswa
+Public Class ProgramStudi
 
     Private headerColor As Color = Color.Transparent
 
@@ -33,36 +33,31 @@ Public Class Mahasiswa
         draggable = False
     End Sub
 
-    Private Sub Maha_Click(sender As Object, e As EventArgs) Handles Maha.Click
-
-    End Sub
-
-    Private Sub Mahasiswa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub KelasLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim data_adapter As DataAdapter
         Dim data_set As DataSet
         Dim query As String
-
         Me.CenterToScreen()
+
 
         DataGridView1.Update()
         DataGridView1.RefreshEdit()
-
 
         connect.Close()
 
         If open_db() Then
             data_set = New DataSet
-            query = "SELECT id, name, gender, jurusan, created_at FROM mahasiswa ORDER BY id DESC"
+            query = "SELECT * FROM jurusan ORDER BY id DESC"
             Try
                 data_adapter = New MySqlDataAdapter(query, connect)
 
                 data_adapter.Fill(data_set)
                 DataGridView1.DataSource = data_set.Tables(0)
                 DataGridView1.Columns(0).HeaderText = "ID"
-                DataGridView1.Columns(1).HeaderText = "Nama Lengkap"
-                DataGridView1.Columns(2).HeaderText = "Gender"
-                DataGridView1.Columns(3).HeaderText = "Program Studi"
-                DataGridView1.Columns(4).HeaderText = "Tanggal Mendaftar"
+                DataGridView1.Columns(1).HeaderText = "Program Studi"
+                DataGridView1.Columns(2).HeaderText = "Kode"
+                DataGridView1.Columns(3).HeaderText = "Jenjang"
+                DataGridView1.Columns(4).HeaderText = "Fakultas"
 
                 Dim btn_edit As New DataGridViewButtonColumn()
                 btn_edit.Name = "btn_edit"
@@ -87,16 +82,19 @@ Public Class Mahasiswa
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        AddMahasiswa.Show()
+        AddProgramStudi.Show()
     End Sub
 
     Public Sub refresh_data(sender As Object, e As EventArgs)
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
-        Mahasiswa_Load(e, e) 'Load everything in your form, load event again
+        KelasLoad(e, e) 'Load everything in your form, load event again
 
         Me.Refresh()
     End Sub
+
+    Public P_Studi As String
+    Public ID As String
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         'Delete data
@@ -109,11 +107,15 @@ Public Class Mahasiswa
             End If
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            MessageBox.Show(r1.Cells("ID").Value)
+            ID = r1.Cells("ID").Value
+
+            LoadDataById()
+            UpdateKelas()
+            UpdateMahasiswa()
 
             If open_db() Then
                 Try
-                    Dim sql As String = "DELETE FROM mahasiswa WHERE id='" & r1.Cells("ID").Value & "'"
+                    Dim sql As String = "DELETE FROM jurusan WHERE id='" & r1.Cells("ID").Value & "'"
                     command = New MySqlCommand(sql, connect)
                     command.ExecuteNonQuery()
 
@@ -132,28 +134,84 @@ Public Class Mahasiswa
             End If
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            EditMahasiswa.update_id.Text = r1.Cells("ID").Value
+            EditProgramStudi.ID.Text = r1.Cells("ID").Value
 
-            EditMahasiswa.Show()
+            EditProgramStudi.Show()
         End If
     End Sub
 
-    Private Sub kelas_nav_Click(sender As Object, e As EventArgs) Handles kelas_nav.Click
-        Hide()
+    Private Sub LoadDataById()
+        connect.Close()
+        Dim command As MySqlCommand
+        Dim reader As MySqlDataReader
+        Dim query As String = "SELECT * FROM jurusan WHERE id='" & ID & "'"
 
-        kelas_form.Visible = True
+        If open_db() Then
+            Try
+                command = New MySqlCommand(query, connect)
+                reader = command.ExecuteReader
+
+                Do While reader.Read
+                    P_Studi = reader.Item("name")
+                Loop
+                reader.Close()
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub UpdateKelas()
+        connect.Close()
+        Dim command2 As MySqlCommand
+
+        If open_db() Then
+            Try
+                Dim sql_kelas As String = "UPDATE kelas SET jurusan='' WHERE jurusan='" & P_Studi & "'"
+                command2 = New MySqlCommand(sql_kelas, connect)
+                command2.ExecuteNonQuery()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub UpdateMahasiswa()
+        connect.Close()
+        Dim command2 As MySqlCommand
+
+        If open_db() Then
+            Try
+                Dim sql_kelas As String = "UPDATE mahasiswa SET jurusan='' WHERE jurusan='" & P_Studi & "'"
+                command2 = New MySqlCommand(sql_kelas, connect)
+                command2.ExecuteNonQuery()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub mahasiswa_nav_Click(sender As Object, e As EventArgs) Handles mahasiswa_nav.Click
+        Me.Hide()
+        Mahasiswa.Show()
+        Mahasiswa.refresh_data(e, e)
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        Hide()
+        kelas_form.Show()
         kelas_form.refresh_data(e, e)
     End Sub
 
-    Private Sub program_nav_Click(sender As Object, e As EventArgs) Handles program_nav.Click
-        Hide()
-        ProgramStudi.Visible = True
-        ProgramStudi.refresh_data(e, e)
-    End Sub
-
-    Private Sub fakultas_nav_Click(sender As Object, e As EventArgs) Handles fakultas_nav.Click
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
         Hide()
         Fakultas.Show()
-        Fakultas.refresh_data(e, e)
     End Sub
 End Class
