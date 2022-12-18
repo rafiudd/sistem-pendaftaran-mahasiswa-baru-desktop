@@ -4,6 +4,7 @@ Imports System.Diagnostics.Eventing
 Imports System.IO
 Imports System.Reflection.Metadata
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+Imports System.Net.Mail
 
 Public Class AddMahasiswa
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
@@ -30,7 +31,6 @@ Public Class AddMahasiswa
                 Dim sql As String = "INSERT INTO mahasiswa VALUES(NULL,'" & name & "', '" & gender & "', '" & address & "', '" & birthday & "', '" & email & "', '" & jurusan & "', @photo, '" & created_at & "')"
                 command = New MySqlCommand(sql, connect)
                 command.Parameters.Add("@photo", MySqlDbType.Blob).Value = stream.ToArray()
-
                 command.ExecuteNonQuery()
 
                 MessageBox.Show("Sukses Tambah Data")
@@ -45,8 +45,35 @@ Public Class AddMahasiswa
             Finally
                 connect.Close()
             End Try
-
         End If
+
+
+    End Sub
+
+    Private Sub SendEmail()
+        Try
+            Dim smtp_server As New SmtpClient
+            Dim mail As New MailMessage
+
+            smtp_server.UseDefaultCredentials = False
+            smtp_server.Credentials = New Net.NetworkCredential("sarjanalidi@gmail.com", "")
+            smtp_server.Port = 587
+            smtp_server.EnableSsl = False
+            smtp_server.Host = "smtp.gmail.com"
+
+            mail = New MailMessage()
+
+            mail.From = New MailAddress("rayhanrafiudd@gmail.com")
+            mail.To.Add("sirin6867@gmail.com")
+            mail.Subject = "TEST"
+            mail.Body = "TEST"
+
+            smtp_server.Send(mail)
+            MessageBox.Show("Sukses Kirim Email")
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Private Sub ClearData()

@@ -28,6 +28,7 @@ Partial Class EditFakultas
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ID = New System.Windows.Forms.TextBox()
+        Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -102,6 +103,13 @@ Partial Class EditFakultas
         Me.ID.Size = New System.Drawing.Size(427, 23)
         Me.ID.TabIndex = 1
         '
+        'MySqlCommand1
+        '
+        Me.MySqlCommand1.CacheAge = 0
+        Me.MySqlCommand1.Connection = Nothing
+        Me.MySqlCommand1.EnableCaching = False
+        Me.MySqlCommand1.Transaction = Nothing
+        '
         'EditFakultas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -129,4 +137,5 @@ Partial Class EditFakultas
     Friend WithEvents update_fakultas As TextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents ID As TextBox
+    Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
 End Class

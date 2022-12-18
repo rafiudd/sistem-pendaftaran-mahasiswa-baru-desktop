@@ -32,6 +32,7 @@ Partial Class Mahasiswa
         Me.program_nav = New System.Windows.Forms.Label()
         Me.kelas_nav = New System.Windows.Forms.Label()
         Me.Maha = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
@@ -72,6 +73,7 @@ Partial Class Mahasiswa
         Me.Panel1.Controls.Add(Me.kelas_nav)
         Me.Panel1.Controls.Add(Me.Maha)
         Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Location = New System.Drawing.Point(1, -1)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1361, 100)
@@ -124,6 +126,14 @@ Partial Class Mahasiswa
         Me.Maha.Size = New System.Drawing.Size(115, 23)
         Me.Maha.TabIndex = 4
         Me.Maha.Text = "Mahasiswa"
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.Panel2.Location = New System.Drawing.Point(119, 68)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(109, 5)
+        Me.Panel2.TabIndex = 8
         '
         'Button1
         '
@@ -227,4 +237,5 @@ Partial Class Mahasiswa
     Friend WithEvents Button1 As Button
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
+    Friend WithEvents Panel2 As Panel
 End Class

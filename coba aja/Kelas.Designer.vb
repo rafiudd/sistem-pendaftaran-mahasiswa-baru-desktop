@@ -35,6 +35,7 @@ Partial Class kelas_form
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -67,6 +68,7 @@ Partial Class kelas_form
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -195,6 +197,14 @@ Partial Class kelas_form
         Me.MySqlCommand1.EnableCaching = False
         Me.MySqlCommand1.Transaction = Nothing
         '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.Panel2.Location = New System.Drawing.Point(308, 68)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(60, 5)
+        Me.Panel2.TabIndex = 9
+        '
         'kelas_form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -228,4 +238,5 @@ Partial Class kelas_form
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
     Friend WithEvents mahasiswa_nav As Label
+    Friend WithEvents Panel2 As Panel
 End Class

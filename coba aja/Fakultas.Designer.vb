@@ -22,9 +22,9 @@ Partial Class Fakultas
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -35,6 +35,7 @@ Partial Class Fakultas
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MySqlCommand1 = New MySql.Data.MySqlClient.MySqlCommand()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -67,6 +68,7 @@ Partial Class Fakultas
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
@@ -152,37 +154,37 @@ Partial Class Fakultas
         Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
         Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Inter Medium", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.InactiveBorder
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Inter Medium", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.InactiveBorder
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeight = 40
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Inter Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Inter Light", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption
         Me.DataGridView1.Location = New System.Drawing.Point(103, 249)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Inter Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Inter Medium", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.RowTemplate.Height = 40
         Me.DataGridView1.Size = New System.Drawing.Size(1155, 395)
@@ -194,6 +196,14 @@ Partial Class Fakultas
         Me.MySqlCommand1.Connection = Nothing
         Me.MySqlCommand1.EnableCaching = False
         Me.MySqlCommand1.Transaction = Nothing
+        '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(239, Byte), Integer))
+        Me.Panel2.Location = New System.Drawing.Point(611, 68)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(89, 5)
+        Me.Panel2.TabIndex = 11
         '
         'Fakultas
         '
@@ -228,4 +238,5 @@ Partial Class Fakultas
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents MySqlCommand1 As MySql.Data.MySqlClient.MySqlCommand
     Friend WithEvents mahasiswa_nav As Label
+    Friend WithEvents Panel2 As Panel
 End Class

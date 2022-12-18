@@ -97,9 +97,9 @@ Partial Class EditKelas
         Me.Label1.Font = New System.Drawing.Font("Inter SemiBold", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label1.Location = New System.Drawing.Point(82, 31)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(155, 39)
+        Me.Label1.Size = New System.Drawing.Size(208, 39)
         Me.Label1.TabIndex = 10
-        Me.Label1.Text = "Edit Data"
+        Me.Label1.Text = "Update Data"
         '
         'Button1
         '
@@ -114,7 +114,7 @@ Partial Class EditKelas
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(455, 58)
         Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Simpan Data"
+        Me.Button1.Text = "Update"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Label3
@@ -221,7 +221,7 @@ Partial Class EditKelas
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "EditKelas"
-        Me.Text = "Edit Kelas"
+        Me.Text = "Update Kelas"
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.Panel3.ResumeLayout(False)
