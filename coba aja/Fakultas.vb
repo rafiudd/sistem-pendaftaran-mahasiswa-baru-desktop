@@ -5,9 +5,6 @@ Imports coba_aja.My.Resources
 Imports MySql.Data.MySqlClient
 
 Public Class Fakultas
-
-    Private headerColor As Color = Color.Transparent
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Close()
     End Sub
@@ -79,7 +76,7 @@ Public Class Fakultas
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
-        AddKelas.Show()
+        AddFakultas.Show()
     End Sub
 
     Public Sub refresh_data(sender As Object, e As EventArgs)
@@ -89,6 +86,9 @@ Public Class Fakultas
 
         Me.Refresh()
     End Sub
+
+    Public P_Studi As String
+    Public ID As String
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
         'Delete data
@@ -102,10 +102,14 @@ Public Class Fakultas
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
 
+            ID = r1.Cells("ID").Value
+
+            LoadDataById()
+            UpdateJurusan()
 
             If open_db() Then
                 Try
-                    Dim sql As String = "DELETE FROM kelas fakultas id='" & r1.Cells("ID").Value & "'"
+                    Dim sql As String = "DELETE FROM fakultas WHERE id='" & r1.Cells("ID").Value & "'"
                     command = New MySqlCommand(sql, connect)
                     command.ExecuteNonQuery()
 
@@ -124,9 +128,49 @@ Public Class Fakultas
             End If
 
             Dim r1 As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-            EditKelas.ID.Text = r1.Cells("ID").Value
+            EditFakultas.ID.Text = r1.Cells("ID").Value
 
-            EditKelas.Show()
+            EditFakultas.Show()
+        End If
+    End Sub
+
+    Private Sub LoadDataById()
+        connect.Close()
+        Dim command As MySqlCommand
+        Dim reader As MySqlDataReader
+        Dim query As String = "SELECT * FROM fakultas WHERE id='" & ID & "'"
+
+        If open_db() Then
+            Try
+                command = New MySqlCommand(query, connect)
+                reader = command.ExecuteReader
+
+                Do While reader.Read
+                    P_Studi = reader.Item("name")
+                Loop
+                reader.Close()
+
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
+        End If
+    End Sub
+    Private Sub UpdateJurusan()
+        connect.Close()
+        Dim command2 As MySqlCommand
+
+        If open_db() Then
+            Try
+                Dim sql_kelas As String = "UPDATE jurusan SET fakultas='' WHERE fakultas='" & P_Studi & "'"
+                command2 = New MySqlCommand(sql_kelas, connect)
+                command2.ExecuteNonQuery()
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
         End If
     End Sub
 

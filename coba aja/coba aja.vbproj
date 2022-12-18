@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="EditFakultas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddFakultas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="EditProgramStudi.vb">
       <SubType>Form</SubType>
     </Compile>
