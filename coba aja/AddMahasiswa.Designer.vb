@@ -43,6 +43,8 @@ Partial Class AddMahasiswa
         Me.upload_photo = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+        Me.Panel9 = New System.Windows.Forms.Panel()
         Me.Panel4.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -255,7 +257,7 @@ Partial Class AddMahasiswa
         '
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel7.Controls.Add(Me.upload_photo)
-        Me.Panel7.Location = New System.Drawing.Point(580, 453)
+        Me.Panel7.Location = New System.Drawing.Point(580, 578)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(205, 38)
         Me.Panel7.TabIndex = 9
@@ -285,10 +287,30 @@ Partial Class AddMahasiswa
         '
         Me.Panel8.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel8.Controls.Add(Me.PictureBox1)
-        Me.Panel8.Location = New System.Drawing.Point(580, 218)
+        Me.Panel8.Location = New System.Drawing.Point(580, 320)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(205, 217)
         Me.Panel8.TabIndex = 17
+        '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.CheckedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.CheckedListBox1.Font = New System.Drawing.Font("Inter", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.CheckedListBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Location = New System.Drawing.Point(584, 204)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(455, 88)
+        Me.CheckedListBox1.TabIndex = 18
+        '
+        'Panel9
+        '
+        Me.Panel9.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.Panel9.Location = New System.Drawing.Point(580, 201)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(463, 94)
+        Me.Panel9.TabIndex = 19
         '
         'AddMahasiswa
         '
@@ -296,6 +318,7 @@ Partial Class AddMahasiswa
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1105, 757)
+        Me.Controls.Add(Me.CheckedListBox1)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel2)
@@ -306,6 +329,7 @@ Partial Class AddMahasiswa
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel8)
+        Me.Controls.Add(Me.Panel9)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "AddMahasiswa"
         Me.Text = "Tambah Mahasiswa"
@@ -351,4 +375,6 @@ Partial Class AddMahasiswa
     Friend WithEvents add_fullname As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Panel8 As Panel
+    Friend WithEvents CheckedListBox1 As CheckedListBox
+    Friend WithEvents Panel9 As Panel
 End Class

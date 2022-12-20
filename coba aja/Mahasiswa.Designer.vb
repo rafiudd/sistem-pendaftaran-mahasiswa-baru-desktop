@@ -130,7 +130,7 @@ Partial Class Mahasiswa
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(174, Byte), Integer), CType(CType(239, Byte), Integer))
-        Me.Panel2.Location = New System.Drawing.Point(119, 68)
+        Me.Panel2.Location = New System.Drawing.Point(115, 68)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(109, 5)
         Me.Panel2.TabIndex = 8

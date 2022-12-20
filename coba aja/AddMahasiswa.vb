@@ -11,8 +11,9 @@ Public Class AddMahasiswa
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim command As MySqlCommand
-        Dim name, gender, address, jurusan, birthday, email, created_at As String
+        Dim name, gender, address, jurusan, birthday, email, created_at, kelas As String
         Dim stream As New MemoryStream
+        Dim array As String()
 
         name = add_fullname.Text
         gender = add_jenis_kelamin.Text
@@ -22,13 +23,17 @@ Public Class AddMahasiswa
         birthday = Format(add_tanggal_lahir.Value, "dd-MM-yyyy")
         created_at = Format(Now, "dd-MM-yyyy hh:ss")
 
+        array = CheckedListBox1.CheckedItems.Cast(Of String).ToArray
+        kelas = String.Join(",", array)
+
+        MessageBox.Show(kelas)
         PictureBox1.Image.Save(stream, PictureBox1.Image.RawFormat)
 
         connect.Close()
 
         If open_db() Then
             Try
-                Dim sql As String = "INSERT INTO mahasiswa VALUES(NULL,'" & name & "', '" & gender & "', '" & address & "', '" & birthday & "', '" & email & "', '" & jurusan & "', @photo, '" & created_at & "')"
+                Dim sql As String = "INSERT INTO mahasiswa VALUES(NULL,'" & name & "', '" & gender & "', '" & address & "', '" & birthday & "', '" & email & "', '" & jurusan & "', '" & kelas & "', @photo, '" & created_at & "')"
                 command = New MySqlCommand(sql, connect)
                 command.Parameters.Add("@photo", MySqlDbType.Blob).Value = stream.ToArray()
                 command.ExecuteNonQuery()
@@ -115,6 +120,33 @@ Public Class AddMahasiswa
         End If
     End Sub
 
+    Private Sub LoadDataKelas()
+        connect.Close()
+        Dim command As MySqlCommand
+        Dim reader As MySqlDataReader
+        Dim query As String = "SELECT name FROM kelas where jurusan='" & add_jurusan.Text & "'"
+
+        If open_db() Then
+            Try
+                command = New MySqlCommand(query, connect)
+
+                reader = command.ExecuteReader
+
+                Do While reader.Read
+                    CheckedListBox1.Items.Add(reader(0))
+                Loop
+            Catch ex As Exception
+                MessageBox.Show(ex.Message)
+            Finally
+                connect.Close()
+            End Try
+        End If
+    End Sub
+
+    Private Sub ClearDataKelas()
+        CheckedListBox1.Items.Clear()
+    End Sub
+
     Private Sub upload_photo_Click(sender As Object, e As EventArgs) Handles upload_photo.Click
         Dim open_file As New OpenFileDialog
 
@@ -123,5 +155,19 @@ Public Class AddMahasiswa
         If open_file.ShowDialog = System.Windows.Forms.DialogResult.OK Then
             PictureBox1.Image = Image.FromFile(open_file.FileName)
         End If
+    End Sub
+
+    Private Sub add_jurusan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles add_jurusan.SelectedIndexChanged
+        ClearDataKelas()
+        LoadDataKelas()
+    End Sub
+
+    Private Sub CheckedListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CheckedListBox1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub add_jurusan_SelectedValueChanged(sender As Object, e As EventArgs) Handles add_jurusan.SelectedValueChanged
+        ClearDataKelas()
+        LoadDataKelas()
     End Sub
 End Class

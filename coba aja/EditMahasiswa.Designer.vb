@@ -45,6 +45,10 @@ Partial Class EditMahasiswa
         Me.update_address = New System.Windows.Forms.TextBox()
         Me.Panel9 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.ListBox = New System.Windows.Forms.CheckedListBox()
+        Me.Panel10 = New System.Windows.Forms.Panel()
+        Me.Panel11 = New System.Windows.Forms.Panel()
+        Me.update_kelas = New System.Windows.Forms.TextBox()
         Me.Panel7.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -54,6 +58,7 @@ Partial Class EditMahasiswa
         Me.Panel8.SuspendLayout()
         Me.Panel9.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel11.SuspendLayout()
         Me.SuspendLayout()
         '
         'update_id
@@ -88,7 +93,7 @@ Partial Class EditMahasiswa
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Inter SemiBold", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(381, 664)
+        Me.Button1.Location = New System.Drawing.Point(105, 654)
         Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(455, 58)
@@ -108,7 +113,7 @@ Partial Class EditMahasiswa
         '
         Me.Panel7.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel7.Controls.Add(Me.upload_photo)
-        Me.Panel7.Location = New System.Drawing.Point(604, 543)
+        Me.Panel7.Location = New System.Drawing.Point(836, 495)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(205, 38)
         Me.Panel7.TabIndex = 20
@@ -129,7 +134,7 @@ Partial Class EditMahasiswa
         Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel6.Controls.Add(Me.Label3)
         Me.Panel6.Controls.Add(Me.update_jurusan)
-        Me.Panel6.Location = New System.Drawing.Point(604, 197)
+        Me.Panel6.Location = New System.Drawing.Point(604, 192)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(455, 84)
         Me.Panel6.TabIndex = 24
@@ -251,7 +256,7 @@ Partial Class EditMahasiswa
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel3.Controls.Add(Me.update_fullname)
-        Me.Panel3.Location = New System.Drawing.Point(105, 197)
+        Me.Panel3.Location = New System.Drawing.Point(105, 193)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(455, 60)
         Me.Panel3.TabIndex = 18
@@ -299,7 +304,7 @@ Partial Class EditMahasiswa
         '
         Me.Panel9.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
         Me.Panel9.Controls.Add(Me.PictureBox1)
-        Me.Panel9.Location = New System.Drawing.Point(604, 309)
+        Me.Panel9.Location = New System.Drawing.Point(604, 495)
         Me.Panel9.Name = "Panel9"
         Me.Panel9.Size = New System.Drawing.Size(205, 217)
         Me.Panel9.TabIndex = 25
@@ -314,12 +319,57 @@ Partial Class EditMahasiswa
         Me.PictureBox1.TabIndex = 15
         Me.PictureBox1.TabStop = False
         '
+        'ListBox
+        '
+        Me.ListBox.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.ListBox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.ListBox.Font = New System.Drawing.Font("Inter", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ListBox.ForeColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer), CType(CType(102, Byte), Integer))
+        Me.ListBox.FormattingEnabled = True
+        Me.ListBox.Location = New System.Drawing.Point(608, 301)
+        Me.ListBox.Name = "ListBox"
+        Me.ListBox.Size = New System.Drawing.Size(448, 88)
+        Me.ListBox.TabIndex = 26
+        '
+        'Panel10
+        '
+        Me.Panel10.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.Panel10.Location = New System.Drawing.Point(604, 298)
+        Me.Panel10.Name = "Panel10"
+        Me.Panel10.Size = New System.Drawing.Size(455, 94)
+        Me.Panel10.TabIndex = 27
+        '
+        'Panel11
+        '
+        Me.Panel11.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.Panel11.Controls.Add(Me.update_kelas)
+        Me.Panel11.Location = New System.Drawing.Point(604, 411)
+        Me.Panel11.Name = "Panel11"
+        Me.Panel11.Size = New System.Drawing.Size(455, 60)
+        Me.Panel11.TabIndex = 10
+        '
+        'update_kelas
+        '
+        Me.update_kelas.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer))
+        Me.update_kelas.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.update_kelas.Enabled = False
+        Me.update_kelas.Font = New System.Drawing.Font("Inter", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.update_kelas.Location = New System.Drawing.Point(14, 18)
+        Me.update_kelas.Margin = New System.Windows.Forms.Padding(20)
+        Me.update_kelas.Name = "update_kelas"
+        Me.update_kelas.PlaceholderText = "Kelas"
+        Me.update_kelas.ReadOnly = True
+        Me.update_kelas.Size = New System.Drawing.Size(427, 23)
+        Me.update_kelas.TabIndex = 2
+        '
         'EditMahasiswa
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.ClientSize = New System.Drawing.Size(1141, 745)
+        Me.ClientSize = New System.Drawing.Size(1141, 825)
+        Me.Controls.Add(Me.ListBox)
+        Me.Controls.Add(Me.Panel10)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel1)
@@ -332,6 +382,7 @@ Partial Class EditMahasiswa
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Panel11)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "EditMahasiswa"
         Me.Text = "Edit Mahasiswa"
@@ -351,6 +402,8 @@ Partial Class EditMahasiswa
         Me.Panel8.PerformLayout()
         Me.Panel9.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel11.ResumeLayout(False)
+        Me.Panel11.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -378,4 +431,8 @@ Partial Class EditMahasiswa
     Friend WithEvents update_address As TextBox
     Friend WithEvents Panel9 As Panel
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ListBox As CheckedListBox
+    Friend WithEvents Panel10 As Panel
+    Friend WithEvents Panel11 As Panel
+    Friend WithEvents update_kelas As TextBox
 End Class
